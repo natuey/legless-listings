@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
 
     def new
         # shows form for creating the listings
+        @listing = Listing.new
     end
 
     def show
@@ -34,6 +35,7 @@ class ListingsController < ApplicationController
         
     end
 
+    private
     def set_listing
         id = params[:id]
         @listing = Lising.find(id)
