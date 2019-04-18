@@ -8,7 +8,12 @@ class ListingsController < ApplicationController
 
     def create
         # create new listing
+       @listing = Listing.create(listing_params)
+        # byebug #this byebug is for debugging
+        byebug
     end
+
+    
 
     def new
         # shows form for creating the listings
@@ -43,6 +48,9 @@ class ListingsController < ApplicationController
         @listing = Lising.find(id)
     end
 
+    def listing_params
+        params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet)
+    end
 
 
 end
