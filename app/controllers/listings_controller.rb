@@ -1,6 +1,8 @@
 class ListingsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
     before_action :set_breeds_and_sexes, only: [:new, :edit]
+    
    
     def index
         # show all the listings
@@ -23,9 +25,7 @@ class ListingsController < ApplicationController
     def new
         # shows form for creating the listings
         @listing = Listing.new
-        
-
-
+    
     end
 
     def show
@@ -60,7 +60,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet)
+        params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet, :picture)
     end
 
 
